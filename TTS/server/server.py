@@ -207,7 +207,7 @@ def tts():
         blob_url = out.getvalue().decode("utf-8")
         wav_url = blob_url.replace("blob:", "") + ".wav"
 
-    return send_file(wav_url, mimetype="audio/wav")
+    return redirect(wav_url)
 
 # @app.route("/api/tts", methods=["GET"])
 # def tts():
