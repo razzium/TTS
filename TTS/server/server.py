@@ -220,6 +220,23 @@ def french_tts_post():
         synthesizer.save_wav(wavs, out)
     return send_file(out, mimetype="audio/wav")
 
+@app.route("/api/french_tts_post_2", methods=["POST"])
+def french_tts_post_2():
+    with lock:
+        text = request.args.get("text")
+        speaker_idx = ""
+        language_idx = "fr-fr"
+        style_wav = ""
+        style_wav = style_wav_uri_to_dict(style_wav)
+        print(f" > Model input: {text}")
+        print(f" > Speaker Idx: {speaker_idx}")
+        print(f" > Language Idx: {language_idx}")
+        wavs = synthesizer.tts(text, speaker_name=speaker_idx, language_name=language_idx, style_wav=style_wav)
+        out = io.BytesIO()
+        synthesizer.save_wav(wavs, out)
+    return send_file(out, mimetype="audio/wav")
+
+
 # Basic MaryTTS compatibility layer
 
 
