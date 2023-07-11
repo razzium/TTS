@@ -207,10 +207,10 @@ def tts():
 @app.route("/api/ttsa", methods=["POST"])
 def ttsa():
     with lock:
-        text = request.args.post("text")
-        speaker_idx = request.args.post("speaker_id", "")
-        language_idx = request.args.post("language_id", "")
-        style_wav = request.args.post("style_wav", "")
+        text = request.args.get("text")
+        speaker_idx = request.args.get("speaker_id", "")
+        language_idx = request.args.get("language_id", "")
+        style_wav = request.args.get("style_wav", "")
         style_wav = style_wav_uri_to_dict(style_wav)
         print(f" > Model input: {text}")
         print(f" > Speaker Idx: {speaker_idx}")
