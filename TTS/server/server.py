@@ -208,8 +208,8 @@ def tts():
 def french_tts_post():
     with lock:
         text = request.args.get("text")
-        speaker_idx = "male-en-2"
-        language_idx = "fr-fr"
+        speaker_idx = request.args.get("speaker_id", "")
+        language_idx = request.args.get("language_id", "")
         style_wav = ""
         style_wav = style_wav_uri_to_dict(style_wav)
         print(f" > Model input: {text}")
