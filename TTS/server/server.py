@@ -205,7 +205,7 @@ def tts():
     return send_file(out, mimetype="audio/wav")
 
 @app.route("/api/ttsa", methods=["POST"])
-def tts():
+def ttsa():
     with lock:
         text = request.args.post("text")
         speaker_idx = request.args.post("speaker_id", "")
