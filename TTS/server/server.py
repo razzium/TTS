@@ -204,7 +204,7 @@ def tts():
         synthesizer.save_wav(wavs, out)
     return send_file(out, mimetype="audio/wav")
 
-@app.route("/api/tts", methods=["POST"])
+@app.route("/api/ttsa", methods=["POST"])
 def tts():
     with lock:
         text = request.args.post("text")
